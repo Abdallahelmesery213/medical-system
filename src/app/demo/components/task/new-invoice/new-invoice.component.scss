@@ -1,0 +1,73 @@
+.new-invoice{
+    .title{
+        background-color: #ede6e5;
+        font-size: 25px;
+        color: var(--blue-600);
+        min-height: 65px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .name{
+        min-height: 45px;
+        display: flex;
+        background-color: #f2f2f2;
+        justify-content: space-between;
+        // align-items: center;
+        .part1{
+            color: var(--blue-600);
+            font-weight: bold;
+        }
+        div{
+            border: 1px solid #d3d3d3;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding-right: 1rem;
+            font-size: 17px;
+            color: #000;
+        }
+    }
+    .actions{
+        direction: rtl;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        .p-fluid .p-dropdown{
+            direction: rtl;
+        }
+       .service{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+       }
+    }
+    .custom-header {
+        // background-color: #617962; 
+        color: rgb(85, 172, 63); 
+        text-align: center;
+    }
+    tr td{
+        color: var(--blue-600);
+        font-size: 17px;
+        text-align: center;
+    }
+    .serviceTax{
+        margin-top: 10px;
+    }
+    .tax-services{
+        min-height: 40px;
+        display: flex;
+        background-color: #f2f2f2;
+        justify-content: space-between;
+        // align-items: center;
+        div{
+            border: 1px solid #d3d3d3;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding-right: 1rem;
+            font-size: 17px;
+            color: #000;
+        }
+    }
+}
