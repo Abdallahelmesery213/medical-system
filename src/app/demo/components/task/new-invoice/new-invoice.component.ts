@@ -38,9 +38,12 @@ export class NewInvoiceComponent implements OnInit {
   clinics: Clinic[] | undefined;
   numberr: any;
   taxs = [];
+  newArr: [] = [];
+  taxSerArr: any;
   finalObj: any | undefined;
   taxSer: any | undefined;
   myForm: FormGroup;
+  taxVal: number = 0;
 
   constructor(
     private taxService: TaxServices,
@@ -76,13 +79,24 @@ export class NewInvoiceComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger
     if (this.myForm.valid) {
       debugger
       let serviceNo =  this.myForm.value.serviceNo.id
       this.finalObj = [this.taxs.find((item: any)=>item.id==serviceNo)];
-      this.taxSer = this.finalObj[0].serviceTax; 
-      console.log("taxSer", this.taxSer)
+      this.taxs.forEach((item)=> {
+        debugger
+        console.log(this)
+        if(item["id"] == serviceNo){
+          if(!this.newArr.includes(item)){
+            this.newArr.push(item);
+          }
+          else {
+            this.toaster.error("هذه الخدمة تمت اضافتها بالفعل")
+          }
+        } 
+        
+      })
+      // this.taxSer = this.finalObj[0].serviceTax; 
       
     } else {
       this.toaster.error("من فضلك أدخل الخدمة")
