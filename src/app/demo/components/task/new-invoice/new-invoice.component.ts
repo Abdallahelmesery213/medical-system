@@ -36,6 +36,7 @@ interface Clinic {
 })
 export class NewInvoiceComponent implements OnInit {
   clinics: Clinic[] | undefined;
+  numberr: any;
   taxs = [];
   finalObj: any | undefined;
   taxSer: any | undefined;
@@ -62,6 +63,10 @@ export class NewInvoiceComponent implements OnInit {
       { name: 'المختبر' },
       { name: 'عيادة أسنان' },
     ];
+    this.numberr = [
+      { number: 1 },
+      
+    ];
 
     this.taxService.getTax().subscribe((res: any) =>{
       this.taxs = res;
@@ -80,7 +85,7 @@ export class NewInvoiceComponent implements OnInit {
       console.log("taxSer", this.taxSer)
       
     } else {
-      this.toaster.error("Please Enter No of Service")
+      this.toaster.error("من فضلك أدخل الخدمة")
     }
   }
 

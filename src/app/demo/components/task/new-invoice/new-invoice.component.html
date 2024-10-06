@@ -17,17 +17,20 @@
         <div class="actions">
             <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
                 <div class="grid formgrid">
-                    <div class="col-12 md:col-2">
+                    <div class="col-12 md:col-3">
                         <p-dropdown [options]="clinics"  optionLabel="name" [showClear]="false"></p-dropdown>
                     </div>
-                    <div class="col-12 md:col-4">
+                    <!-- <div class="col-12 md:col-4">
                         <input type="text" formControlName="serviceName" pInputText placeholder="اسم الخدمة او الكود: Name or Code">
-                    </div>
-                    <div class="col-12 md:col-2">
-                        <div class="service">
+                    </div> -->
+                    <div class="col-12 md:col-3">
+                        <!-- <div class="service">
                             <label for="city">No. </label>
-                            <p-dropdown [options]="taxs" formControlName="serviceNo" optionLabel="id" [showClear]="false"></p-dropdown>
-                        </div>
+                        </div> -->
+                        <p-dropdown [options]="taxs" formControlName="serviceNo" placeholder="أدخل الخدمة" optionLabel="name" [showClear]="false"></p-dropdown>
+                    </div>
+                    <div class="col-12 md:col-3">
+                        <p-dropdown [options]="numberr"  optionLabel="number" placeholder="No" [showClear]="false"></p-dropdown>
                     </div>
                     <div class="col-12 md:col-2">
                         <button pButton pRipple type="submit" style="display: flex; justify-content: center;">Add: اضافة</button>
