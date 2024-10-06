@@ -44,6 +44,7 @@ export class NewInvoiceComponent implements OnInit {
   taxSer: any | undefined;
   myForm: FormGroup;
   taxVal: number = 0;
+  servicePrice: number = 0;
 
   constructor(
     private taxService: TaxServices,
@@ -89,6 +90,46 @@ export class NewInvoiceComponent implements OnInit {
         if(item["id"] == serviceNo){
           if(!this.newArr.includes(item)){
             this.newArr.push(item);
+            // [this.newArr].forEach((el) =>{
+            //   debugger
+            //   el.forEach((service:any) => {
+            //     [service.serviceTax]?.forEach((tax:any) => {
+            //       tax?.forEach((el:any)=>{
+            //         this.taxVal +=  el.tax.taxForUnCitizen;
+            //         console.log("taxVa =>  ", this.taxVal)
+            //       })
+            //     })
+            //   });
+            // })
+
+
+            // Initialize totals
+            let totalServicePrice = 0;
+            let totalTaxForCitizen = 0;
+            let totalTaxForUnCitizen = 0;
+
+            // Loop through each service
+            this.newArr.forEach((service:any) => {
+                // Sum the service price
+                totalServicePrice += service.servicePrice;
+                
+                // Loop through the serviceTax array and sum taxes
+                service.serviceTax.forEach((taxItem:any) => {
+                  totalTaxForCitizen += taxItem.tax.taxForCitizen;
+                  totalTaxForUnCitizen += taxItem.tax.taxForUnCitizen;
+                });
+            });
+
+            this.taxVal = totalTaxForCitizen + totalTaxForUnCitizen;
+            this.servicePrice =  totalTaxForCitizen + totalTaxForUnCitizen + totalServicePrice;
+
+            // Display the results
+            console.log("Total Service Price:", totalServicePrice); // Total service prices
+            console.log("Total Tax for Citizens:", totalTaxForCitizen); // Total tax for citizens
+            console.log("Total Tax for UnCitizens:", totalTaxForUnCitizen); // Total tax for un-citizens
+
+           
+          
           }
           else {
             this.toaster.error("هذه الخدمة تمت اضافتها بالفعل")
